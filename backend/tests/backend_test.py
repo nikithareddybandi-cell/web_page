@@ -9,11 +9,11 @@ import pytest
 BASE_URL = os.environ.get("REACT_APP_BACKEND_URL", "https://filetax-app.preview.emergentagent.com").rstrip("/")
 API = f"{BASE_URL}/api"
 
-ADMIN_EMAIL = "admin@taxfile.com"
-ADMIN_PASSWORD = "Admin@123"
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@taxfile.com")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "Admin@123")
 
 TEST_USER_EMAIL = f"test_user_{uuid.uuid4().hex[:8]}@example.com"
-TEST_USER_PASSWORD = "Test@1234"
+TEST_USER_PASSWORD = os.environ.get("TEST_USER_PASSWORD", "Test@1234")
 TEST_USER_NAME = "TEST User"
 
 

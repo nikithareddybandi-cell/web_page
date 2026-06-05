@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Navbar } from '../components/Navbar';
 import { Button } from '../components/ui/button';
@@ -17,11 +17,7 @@ export const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const [statsRes, docsRes, usersRes] = await Promise.all([
         axios.get(`${API}/admin/stats`, { withCredentials: true }),
@@ -36,7 +32,22 @@ export const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const usersById = useMemo(() => {
+    const map = new Map();
+    users.forEach((u) => map.set(u.id, u));
+    return map;
+  }, [users]);
+
+  const regularUsers = useMemo(
+    () => users.filter((u) => u.role === 'user'),
+    [users]
+  );
 
   const handleStatusUpdate = async (docId, newStatus) => {
     try {
@@ -127,7 +138,7 @@ export const AdminDashboard = () => {
           ) : (
             <div className="space-y-4">
               {documents.map((doc) => {
-                const docUser = users.find((u) => u.id === doc.user_id);
+                const docUser = usersById.get(doc.user_id);
                 return (
                   <div
                     key={doc.id}
@@ -183,9 +194,7 @@ export const AdminDashboard = () => {
           <h2 className="text-2xl tracking-tight text-[#1A1A1A] mb-6">All Users</h2>
 
           <div className="space-y-4">
-            {users
-              .filter((u) => u.role === 'user')
-              .map((u) => (
+            {regularUsers.map((u) => (
                 <div
                   key={u.id}
                   className="flex items-center justify-between p-4 border border-black/5 rounded-md"
