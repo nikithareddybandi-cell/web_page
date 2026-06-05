@@ -1,0 +1,114 @@
+{
+  "theme_and_archetype": {
+    "theme": "LIGHT",
+    "archetype": "Archetype 1 (Organic & Earthy)",
+    "reasoning": "For a tax filing and finance company, users need to feel trust, calm, and stability. A dark tech theme feels too clinical or risky. Organic & Earthy brings a warm, grounded, 'Old Money Tech' aesthetic that reassures users their data is safe."
+  },
+  "typography": {
+    "font_strategy": "The 'Old Money Tech' Protocol",
+    "headings": {
+      "family": "Playfair Display, serif",
+      "weights": ["400", "600", "700"],
+      "usage_rules": "Use tracking-tight for all headings. Never center by default. Use for H1, H2, H3.",
+      "scales": {
+        "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none",
+        "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight",
+        "h3": "text-xl sm:text-2xl tracking-tight"
+      }
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "500", "600"],
+      "usage_rules": "Clean, highly legible geometric sans for financial data and dense text.",
+      "scales": {
+        "body": "text-base leading-relaxed",
+        "small": "text-sm",
+        "overline": "text-xs uppercase tracking-[0.2em] font-semibold"
+      }
+    }
+  },
+  "colors": {
+    "backgrounds": {
+      "default": "#FDFBF7",
+      "muted": "#F1EDE4",
+      "card": "#FFFFFF",
+      "dark_section": "#123524"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "secondary": "#5C5C5C",
+      "on_dark": "#FFFFFF",
+      "on_accent": "#FFFFFF"
+    },
+    "brand": {
+      "primary": "#123524",
+      "secondary": "#3E5849",
+      "accent": "#C86B53",
+      "success": "#2D6A4F",
+      "warning": "#D4A373",
+      "error": "#9B2226"
+    }
+  },
+  "spacing_and_layout": {
+    "marketing_pages": {
+      "grid": "Bento Grid Protocol (MODE A). grid-cols-1 md:grid-cols-12 gap-8 to gap-12. Asymmetrical balance.",
+      "padding": "Generous. Sections should use py-24 or py-32. Containers must have internal p-8.",
+      "alignment": "Left-aligned for paragraphs, optical alignment for buttons with icons."
+    },
+    "dashboards": {
+      "grid": "Control Room Grid (MODE B). grid-cols-1 md:grid-cols-3 lg:grid-cols-4. gap-6.",
+      "padding": "Compact but breathable. Cards use p-6.",
+      "surfaces": "Flat Solid backgrounds. NO Glassmorphism (financial data must not refract). 1px subtle borders (border-black/5). Sharp or max 8px (rounded-md) border radius."
+    }
+  },
+  "components_and_interactions": {
+    "libraries": {
+      "icons": "@phosphor-icons/react",
+      "ui": "Shadcn UI (Customized to remove generic Vercel look)",
+      "animations": "framer-motion (Subtle entrances, hover states)",
+      "charts": "recharts (wrapped in Shadcn Chart components)"
+    },
+    "rules": {
+      "buttons": "Accent color (#C86B53) for primary CTAs like 'File Taxes' or 'Log In'. Hover state must be a lighter hue. focus:ring-2 focus:ring-offset-2 focus:ring-[#C86B53].",
+      "cards": "In dashboards, flat background, 1px border. On hover, slight lift (-translate-y-1) and shadow-sm.",
+      "forms": "Use Shadcn Input, Select, Form. Left-aligned labels. Clear validation colors.",
+      "navigation": "Sticky header with backdrop-blur-xl bg-[#FDFBF7]/80 on marketing pages. Solid background on dashboards. Navigation links must be visible on desktop."
+    }
+  },
+  "media": {
+    "image_urls": [
+      {
+        "category": "hero",
+        "url": "https://images.pexels.com/photos/7108269/pexels-photo-7108269.jpeg",
+        "description": "Business professionals in modern open office. Use for main landing page hero."
+      },
+      {
+        "category": "team_about",
+        "url": "https://images.pexels.com/photos/12903168/pexels-photo-12903168.jpeg",
+        "description": "Professional team collaborating. Use for About Us section."
+      },
+      {
+        "category": "services",
+        "url": "https://images.pexels.com/photos/7947661/pexels-photo-7947661.jpeg",
+        "description": "Magnifying glass and financial charts. Use for Services or feature block."
+      },
+      {
+        "category": "dashboard_abstract",
+        "url": "https://images.unsplash.com/photo-1745509267699-1b1db256601e",
+        "description": "Dark abstract financial chart. Use sparingly as an accent background for a promo card in the dashboard."
+      }
+    ],
+    "image_usage_rules": "Hero images must use a gradient overlay for text readability (e.g. bg-gradient-to-r from-[#123524]/80 to-transparent). Max overlay opacity 50% for solid black/white."
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the 'Organic & Earthy' color palette. DO NOT use generic SaaS blue or purple.",
+    "Marketing pages MUST be heavily customized using pure HTML/Tailwind with asymmetrical bento grids.",
+    "Dashboards MUST use Shadcn UI components but customized to use the brand colors, removing the default black/white Vercel look.",
+    "Use Playfair Display for all H1/H2/H3 headings and Manrope for body text. Add them to the global CSS.",
+    "Ensure all interactive elements have data-testid attributes (kebab-case, role-based).",
+    "Never use generic placeholder images. Use the provided image_urls.",
+    "For the file upload feature in the user portal, implement a clear, drag-and-drop styled zone using Shadcn components.",
+    "Admin portal should prioritize 'North star metric in the top-left' and use hierarchical KPIs before secondary details."
+  ]
+}
+
